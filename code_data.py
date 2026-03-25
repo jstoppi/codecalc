@@ -107,6 +107,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": None,
         "drinking": 500,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "general",
     },
     {
@@ -123,6 +124,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": None,
         "drinking": 500,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "general",
     },
     {
@@ -139,6 +141,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": None,
         "drinking": 500,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "general",
     },
     {
@@ -155,6 +158,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": None,
         "drinking": 1000,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "general",
     },
     {
@@ -171,6 +175,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": None,
         "drinking": 500,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "general",
     },
     {
@@ -187,6 +192,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": None,
         "drinking": 1000,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "general",
     },
     {
@@ -203,6 +209,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": None,
         "drinking": 1000,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "general",
     },
     {
@@ -219,6 +226,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": 150,
         "drinking": 1000,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "general",
     },
     {
@@ -235,6 +243,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": None,
         "drinking": 1000,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "general",
     },
     # --- 2  Business ---
@@ -252,6 +261,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": None,
         "drinking": 100,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "business",
     },
     # --- 3  Educational ---
@@ -269,6 +279,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": None,
         "drinking": 100,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "general",
     },
     # --- 4  Factory and industrial ---
@@ -286,6 +297,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": None,
         "drinking": 400,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "general",
     },
     # --- 5  Institutional ---
@@ -303,6 +315,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": 8,
         "drinking": 100,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "general",
     },
     {
@@ -319,6 +332,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": None,
         "drinking": 100,
         "other": None,
+        "service_sink": None,
         "separate_facilities_rule": "general",
     },
     {
@@ -335,6 +349,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": None,
         "drinking": 500,
         "other": None,
+        "service_sink": None,
         "separate_facilities_rule": "general",
     },
     {
@@ -351,6 +366,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": 15,
         "drinking": 100,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "general",
     },
     {
@@ -367,6 +383,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": None,
         "drinking": 100,
         "other": None,
+        "service_sink": None,
         "separate_facilities_rule": "general",
     },
     {
@@ -383,6 +400,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": {"fixed": 1},
         "drinking": 100,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "general",
     },
     # --- 6  Mercantile ---
@@ -400,6 +418,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": None,
         "drinking": 1000,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "mercantile",
     },
     # --- 7  Residential (calculable only) ---
@@ -417,6 +436,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": 8,
         "drinking": 100,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "residential",
     },
     {
@@ -433,6 +453,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": 8,
         "drinking": 100,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "residential",
     },
     # --- 8  Storage ---
@@ -450,6 +471,7 @@ PLUMBING_FIXTURE_CATEGORIES = [
         "bath": None,
         "drinking": 1000,
         "other": "1 service sink",
+        "service_sink": {"fixed": 1},
         "separate_facilities_rule": "general",
     },
 ]

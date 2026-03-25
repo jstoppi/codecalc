@@ -281,6 +281,7 @@ def build_plumbing_analysis(plumbing_df: pd.DataFrame, male_ratio: float) -> lis
             "lav_female": calculate_fixture_raw(female_occ, category_item["lav_female"]),
             "bath": calculate_fixture_raw(occupants, category_item["bath"]),
             "drinking": calculate_fixture_raw(occupants, category_item["drinking"]),
+            "service_sink": calculate_fixture_raw(occupants, category_item["service_sink"]),
             "other": category_item["other"] if category_item["other"] else "\u2014",
             "separate_facilities": evaluate_separate_facilities(category_item, occupants),
             "code_ref": category_item["code_ref"],
@@ -290,12 +291,13 @@ def build_plumbing_analysis(plumbing_df: pd.DataFrame, male_ratio: float) -> lis
             "lav_female_ratio": category_item["lav_female"],
             "bath_ratio": category_item["bath"],
             "drinking_ratio": category_item["drinking"],
+            "service_sink_ratio": category_item["service_sink"],
         })
 
     return results
 
 
-FIXTURE_KEYS = ["wc_male", "wc_female", "lav_male", "lav_female", "bath", "drinking"]
+FIXTURE_KEYS = ["wc_male", "wc_female", "lav_male", "lav_female", "bath", "drinking", "service_sink"]
 
 
 def sum_fixtures(analysis: list[dict]) -> dict:
@@ -324,7 +326,7 @@ def build_plumbing_export_df(analysis: list[dict]) -> pd.DataFrame:
         "No.", "Classification", "Description",
         "Occupants", "Male Occ", "Female Occ",
         "WC (M)", "WC (F)", "Lav (M)", "Lav (F)",
-        "Bathtubs/Showers", "Drinking Fountains", "Other",
+        "Bathtubs/Showers", "Drinking Fountains", "Service Sinks",
         "Separate Facilities", "Code Basis",
     ]
     if not analysis:
@@ -348,7 +350,7 @@ def build_plumbing_export_df(analysis: list[dict]) -> pd.DataFrame:
             "Lav (F)": round(item["lav_female"], 2),
             "Bathtubs/Showers": round(item["bath"], 2) if item["bath"] > 0 else "\u2014",
             "Drinking Fountains": round(item["drinking"], 2),
-            "Other": item["other"],
+            "Service Sinks": round(item["service_sink"], 2) if item["service_sink"] > 0 else "\u2014",
             "Separate Facilities": item["separate_facilities"],
             "Code Basis": item["code_ref"],
         })
@@ -367,7 +369,7 @@ def build_plumbing_export_df(analysis: list[dict]) -> pd.DataFrame:
         "Lav (F)": round(sums["lav_female"], 2),
         "Bathtubs/Showers": round(sums["bath"], 2) if sums["bath"] > 0 else "\u2014",
         "Drinking Fountains": round(sums["drinking"], 2),
-        "Other": "",
+        "Service Sinks": round(sums["service_sink"], 2) if sums["service_sink"] > 0 else "\u2014",
         "Separate Facilities": "",
         "Code Basis": "",
     })
@@ -386,7 +388,7 @@ def build_plumbing_export_df(analysis: list[dict]) -> pd.DataFrame:
         "Lav (F)": required["lav_female"],
         "Bathtubs/Showers": required["bath"] if required["bath"] > 0 else "\u2014",
         "Drinking Fountains": required["drinking"],
-        "Other": "",
+        "Service Sinks": required["service_sink"] if required["service_sink"] > 0 else "\u2014",
         "Separate Facilities": "",
         "Code Basis": "IBC 2021 Table B2902.1",
     })
@@ -587,7 +589,7 @@ else:
             c4.metric("Lav (F)", fmt_frac(item["lav_female"]), help=format_ratio_text(item["lav_female_ratio"]))
             c5.metric("Bath/Shower", fmt_frac(item["bath"]), help=format_ratio_text(item["bath_ratio"]))
             c6.metric("Drinking Ftn", fmt_frac(item["drinking"]), help=format_ratio_text(item["drinking_ratio"]))
-            c7.metric("Other", item["other"])
+            c7.metric("Service Sink", fmt_frac(item["service_sink"]), help=format_ratio_text(item["service_sink_ratio"]))
 
             sep = item["separate_facilities"]
             if sep.startswith("Required"):
@@ -605,25 +607,27 @@ else:
             '</div>',
             unsafe_allow_html=True,
         )
-        a1, a2, a3, a4, a5, a6 = st.columns(6)
+        a1, a2, a3, a4, a5, a6, a7 = st.columns(7)
         a1.metric("WC (M)", fmt_frac(sums["wc_male"]))
         a2.metric("WC (F)", fmt_frac(sums["wc_female"]))
         a3.metric("Lav (M)", fmt_frac(sums["lav_male"]))
         a4.metric("Lav (F)", fmt_frac(sums["lav_female"]))
         a5.metric("Bath/Shower", fmt_frac(sums["bath"]))
         a6.metric("Drinking Ftn", fmt_frac(sums["drinking"]))
+        a7.metric("Service Sink", fmt_frac(sums["service_sink"]))
 
     # Final required (ceiling)
     st.markdown("#### Total Required")
     with st.container():
         st.markdown('<div class="totals-card">', unsafe_allow_html=True)
-        t1, t2, t3, t4, t5, t6 = st.columns(6)
+        t1, t2, t3, t4, t5, t6, t7 = st.columns(7)
         t1.metric("WC (M)", required["wc_male"])
         t2.metric("WC (F)", required["wc_female"])
         t3.metric("Lav (M)", required["lav_male"])
         t4.metric("Lav (F)", required["lav_female"])
         t5.metric("Bath/Shower", required["bath"] if required["bath"] > 0 else "\u2014")
         t6.metric("Drinking Ftn", required["drinking"])
+        t7.metric("Service Sink", required["service_sink"] if required["service_sink"] > 0 else "\u2014")
         st.markdown('</div>', unsafe_allow_html=True)
 
     st.caption("Fractional fixture values accumulated across all categories; final total rounded up per code. "
