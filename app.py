@@ -591,12 +591,6 @@ else:
             c6.metric("Drinking Ftn", fmt_frac(item["drinking"]), help=format_ratio_text(item["drinking_ratio"]))
             c7.metric("Service Sink", fmt_frac(item["service_sink"]), help=format_ratio_text(item["service_sink_ratio"]))
 
-            sep = item["separate_facilities"]
-            if sep.startswith("Required"):
-                st.markdown(f'<div class="sep-required"><strong>B2902.2:</strong> {sep}</div>', unsafe_allow_html=True)
-            else:
-                st.markdown(f'<div class="sep-not-required"><strong>B2902.2:</strong> {sep}</div>', unsafe_allow_html=True)
-
             st.markdown("<div style='height:0.5rem'></div>", unsafe_allow_html=True)
 
     # Accumulated raw totals
